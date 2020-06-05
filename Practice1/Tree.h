@@ -27,9 +27,9 @@ public :
 	void DeleteTree(TNode* _toolNode);
 	void InsertNode(TNode* _nodeToInsert);
 	void DeleteNode(TNode* _nodeToDelete);
-	void LookUp(TNode* _nodeToSearch);
-	void FindMax();
-	void FindMin();
-	void PrintTree();
+	int LookUp(TNode* _nodeToSearch);
+	void FindMax(TNode* _maxValue);
+	void FindMin(TNode* _minValue);
+	void PrintTree(TNode* _root);
 };
 
