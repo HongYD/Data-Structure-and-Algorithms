@@ -5,14 +5,15 @@
 #include<stdlib.h>
 #include"LinkList.h"
 #include"Stack.h"
+#include"Tree.h"
 int main()
 {
-    Element* elem = (Element*)malloc(sizeof(Element) * 10);
-    for (int i = 0; i < 10; i++)
-    {
-        (elem + i)->data = i;
-        (elem + i)->next = NULL;
-    }
+    //Element* elem = (Element*)malloc(sizeof(Element) * 10);
+    //for (int i = 0; i < 10; i++)
+    //{
+    //    (elem + i)->data = i;
+    //    (elem + i)->next = NULL;
+    //}
     //LinkList
     /*LinkList* myList = new LinkList();
     myList->InitList(elem,10);
@@ -67,7 +68,17 @@ int main()
     //myStack->DeleteStack();
 
     //Tree
+    TNode* elem2 = (TNode*)malloc(sizeof(TNode) * 10);
+    for (int i = 0; i < 10; i++)
+    {
+        (elem2 + i)->value = i;
+        (elem2 + i)->left = NULL;
+        (elem2 + i)->right = NULL;
+    }
 
+    Tree* BSPTree = new Tree();
+    BSPTree->CreateTree(elem2,10);
+    BSPTree->PrintTree(BSPTree->root);
 }
 
 

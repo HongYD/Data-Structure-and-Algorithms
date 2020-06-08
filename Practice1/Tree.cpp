@@ -37,13 +37,13 @@ void Tree::DeleteTree(TNode* _toolNode)
 
 void Tree::InsertNode(TNode* _nodeToInsert)
 {
-	if (root->left == NULL || root->right == NULL)
-	{
-		return;
-	}
 	if (root == NULL)
 	{
 		root = _nodeToInsert;
+	}
+	if (root->left == NULL || root->right == NULL)
+	{
+		return;
 	}
 	else {
 		if (_nodeToInsert->value > root->value)
