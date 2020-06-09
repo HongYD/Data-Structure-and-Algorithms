@@ -6,8 +6,28 @@
 #include"LinkList.h"
 #include"Stack.h"
 #include"Tree.h"
+int h[101];
+int n;
+void swap(int x, int y);
+void shiftdown(int i);
+void creat();
+int deletemax();
 int main()
 {
+    int i, num;
+    scanf_s("%d", &num);
+    for (i = 1; i <= num; i++)
+    {
+        scanf_s("%d", &h[i]);
+    }
+    n = num;
+    creat();
+
+    for (i = 1; i <= num; i++)
+    {
+        printf("%d ", deletemax());
+    }
+    return 0;
     //Element* elem = (Element*)malloc(sizeof(Element) * 10);
     //for (int i = 0; i < 10; i++)
     //{
@@ -68,19 +88,70 @@ int main()
     //myStack->DeleteStack();
 
     //Tree
-    TNode* elem2 = (TNode*)malloc(sizeof(TNode) * 10);
-    for (int i = 0; i < 10; i++)
-    {
-        (elem2 + i)->value = i;
-        (elem2 + i)->left = NULL;
-        (elem2 + i)->right = NULL;
-    }
+    //TNode* elem2 = (TNode*)malloc(sizeof(TNode) * 10);
+    //for (int i = 0; i < 10; i++)
+    //{
+    //    (elem2 + i)->value = i;
+    //    (elem2 + i)->left = NULL;
+    //    (elem2 + i)->right = NULL;
+    //}
 
-    Tree* BSPTree = new Tree();
-    BSPTree->CreateTree(elem2,10);
-    BSPTree->PrintTree(BSPTree->root);
+    //Tree* BSPTree = new Tree();
+    //BSPTree->CreateTree(elem2,10);
+    //BSPTree->PrintTree(BSPTree->root);
+
 }
 
+void swap(int x, int y)
+{
+    int t;
+    t = h[x];
+    h[x] = h[y];
+    h[y] = t;
+}
+
+void shiftdown(int i)
+{
+    int t, flag = 0;
+    while (i * 2 <= n && flag == 0)
+    {
+        if (h[i] > h[i * 2])
+            t = i * 2;
+        else
+            t = i;
+        if (i * 2 + 1 <= n)
+        {
+            if (h[t] > h[i * 2 + 1])
+                t = i * 2 + 1;
+        }
+        if (t != i)
+        {
+            swap(t, i);
+            i = t;
+        }
+        else
+            flag = 1;
+    }
+}
+
+void creat()
+{
+    int i;
+    for (i = n / 2; i >= 1; i--)
+    {
+        shiftdown(i);
+    }
+}
+
+int deletemax()
+{
+    int t;
+    t = h[1];
+    h[1] = h[n];
+    n--;
+    shiftdown(1);
+    return t;
+}
 
 // 运行程序: Ctrl + F5 或调试 >“开始执行(不调试)”菜单
 // 调试程序: F5 或调试 >“开始调试”菜单
